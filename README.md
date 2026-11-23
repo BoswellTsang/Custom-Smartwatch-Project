@@ -27,30 +27,11 @@ This is **not a completed smartwatch**. Major components have been selected, cus
 | Optical sensing | MAX86141ENP+T AFE on a separate proposed PCB |
 | Board plan | Main smartwatch board + optical sensor daughterboard |
 
-## Functional architecture
+## Functional architecture (prototype)
 
-```text
-Protected 3.7 V LiPo (250 mAh)
-             |
- BQ25185 charger / power path
-             |
-        TPS63900
-      3.0 V system rail
-             |
-       +-----+-----------------+
-       |                       |
-  nRF54L15 BLE MCU         TPS7A20 LDO
-       |                      1.8 V
-       +-- chip RF antenna      |
-       +-- BMI270 IMU           +-- low-voltage peripherals
-       +-- OPT3004 light sensor
-       +-- display / backlight interface
-       +-- SPI to MAX86141 optical-sensing daughterboard
-```
+<img width="671" height="663" alt="image" src="https://github.com/user-attachments/assets/5808e488-54ee-486b-9b73-bff73f1690c1" />
 
-The drawing is conceptual: regulator input/output relationships, peripheral rail compatibility, display supplies and optical LED power must be verified in the actual schematic.
-
-## Engineering work completed so far
+## Work completed so far
 
 ### Power architecture and schematic
 - Selected the BQ25185, TPS63900, TPS7A20, MAX17048 and protected LiPo battery.
@@ -71,21 +52,13 @@ The drawing is conceptual: regulator input/output relationships, peripheral rail
 - Investigated a **4-layer** layout, PD_GND shielding and fine-pitch signal escapes.
 - Identified unresolved AFE interrupt routing and LED-supply compatibility.
 
-## Key unresolved engineering questions
-
-1. **MAX86141 LED supply:** its LED supply requires more voltage than the proposed 3.0 V system rail supplies; the appropriate rail must be designed.
-2. **Display FPC:** confirm the exact electrical and mechanical mating connector and pinout.
-3. **RF antenna:** implement recommended clearance and matching layout, then validate on real hardware.
-4. **Dense analog routing:** complete WLP breakout and photodiode shielding without violating manufacturing constraints.
-5. **Power integrity:** validate the rail requirements of every peripheral before PCB fabrication.
-
 ## Roadmap
 
 - [x] Establish preliminary system architecture and select major ICs
 - [x] Start custom schematic symbols and power circuits
 - [x] Investigate antenna network, display and sensor interfaces
 - [x] Start optical AFE board routing
-- [ ] Finish schematic review, pin mapping and ERC
+- [x] Finish schematic review, pin mapping and ERC
 - [ ] Complete main PCB and optical AFE PCB layout / DRC
 - [ ] Fabricate and assemble the first prototypes
 - [ ] Bring up power, MCU, sensors, display and BLE
