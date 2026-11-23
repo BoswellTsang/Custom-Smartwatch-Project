@@ -1,4 +1,4 @@
-# Engineering progress log
+# Progress log
 
 ## October 2026 — Project definition
 - Chose a custom smartwatch as an independent electronics design project.
@@ -10,6 +10,4 @@
 - Investigated display backlight components, FPC mating and sensor communication options.
 - Began optical MAX86141 daughterboard routing, including supply/ground and photodiode connections.
 - Investigated four-layer stackup and analog photodiode shielding.
-
-## Next entries
-Record design change, objective, part number, engineering reason, verification evidence and next steps. This historical summary is reconstructed from design discussions and should not be treated as a detailed daily lab log.
+  
